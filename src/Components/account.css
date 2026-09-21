@@ -1,0 +1,290 @@
+.account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    padding: 20px;
+    position: relative;
+    z-index: 0;
+}
+.country {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #333;
+    z-index: 2;
+}
+
+.account-card,
+.account-card .account-title,
+.account-card .info-section label,
+.account-card .bookings-section h2,
+.account-card .bookings-section p,
+.account-card .bookings-section li,
+.account-card .booking-ticket,
+.account-card .booking-date {
+    color: #ffffff;
+}
+
+
+.account-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../ASSETS/profile.png") no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+.account-card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    padding: 30px 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    transition: all 0.3s ease;
+    color: #fff;
+}
+
+
+
+.account-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+
+.profile-pic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.profile-pic {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid #4a90e2;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.upload-label {
+    font-size: 14px;
+    color: white;
+    background: #4a90e2;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.upload-label:hover {
+    background: #357abd;
+}
+
+.file-input {
+    display: none;
+}
+
+
+.info-section {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.info-section label {
+    font-weight: 500;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.info-section input,
+.info-section select,
+.info-section textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #d1d9e6;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #f9faff;
+    color: #333;
+}
+
+.info-section input:disabled,
+.info-section select:disabled,
+.info-section textarea:disabled {
+    background: #f0f3f8;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.info-section input:focus,
+.info-section select:focus,
+.info-section textarea:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.3);
+    outline: none;
+}
+
+
+.info-section textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+
+.bookings-section {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.bookings-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.bookings-section p {
+    font-size: 14px;
+    color: #777;
+}
+
+.bookings-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.bookings-section li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9faff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.booking-ticket {
+    font-weight: 700;
+    color: #4a90e2;
+}
+
+.booking-date {
+    color: #555;
+    font-size: 13px;
+}
+
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit-btn {
+    background: linear-gradient(135deg, #4a90e2, #6eb8ff);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(74, 144, 226, 0.3);
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #2ecc71, #58d68d);
+    color: white;
+    box-shadow: 0px 4px 10px rgba(46, 204, 113, 0.3);
+}
+
+.back-btn {
+    background: transparent;
+    border: 2px solid #4a90e2;
+    color: #4a90e2;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+.back-btn:hover {
+    background: #4a90e2;
+    color: white;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+
+@media (max-width: 480px) {
+    .account-card {
+        padding: 20px 15px;
+    }
+
+    .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .info-section input,
+    .info-section select,
+    .info-section textarea {
+        font-size: 13px;
+    }
+
+    .bookings-section li {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 13px;
+    }
+
+    .booking-date {
+        margin-top: 4px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px 18px;
+    }
+}

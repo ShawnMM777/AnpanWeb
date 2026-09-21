@@ -1,0 +1,227 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container */
+.second-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.secondbg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+    filter: brightness(1);
+}
+
+/* ✅ Optional: Remove gray layer if you had one */
+.video-overlay {
+    display: none;
+}
+
+/* Main Layout */
+.main-layout {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    /* ensures above background */
+}
+
+/* Left Panel */
+.places-preview {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Featured Place */
+.featured-place {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 300px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.featured-place img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-place span {
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+.place-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.4);
+    /* lighter, less noticeable */
+    color: white;
+    border: none;
+    font-size: 22px;
+    /* smaller arrow */
+    width: 35px;
+    /* slightly smaller circle */
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.place-arrow:hover {
+    background: rgba(0, 0, 0, 0.6);
+    /* slightly darker on hover */
+    transform: translateY(-50%) scale(1.1);
+}
+
+
+.place-arrow.left {
+    left: 10px;
+}
+
+.place-arrow.right {
+    right: 10px;
+}
+
+.place-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Right Buttons Panel */
+.right-buttons {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 20px;
+    z-index: 15;
+}
+
+/* Buttons */
+.nav-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #333;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    border-color: #007bff;
+}
+
+.button-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.button-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 450px;
+    text-align: center;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.modal-btn {
+    padding: 12px 30px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.confirm-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.cancel-btn {
+    background: #6c757d;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+    }
+
+    .right-buttons {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+}

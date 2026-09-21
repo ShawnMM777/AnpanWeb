@@ -1,0 +1,96 @@
+.signup-form-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.form-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+form {
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.cssbuttons-io-button {
+  background: #000000;
+  border: none;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 12px 24px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.back-btn {
+  background: #555;
+  border: none;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 12px 24px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.signup-btn {
+  background: #007BFF;
+  border: none;
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  padding: 12px 24px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}

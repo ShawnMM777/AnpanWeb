@@ -1,0 +1,61 @@
+.drafts-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #f0f4f8;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    font-family: "Poppins", sans-serif;
+}
+
+.drafts-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.empty-text {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+.draft-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.draft-card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.draft-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.draft-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #4a90e2;
+    margin-bottom: 5px;
+}
+
+.draft-location {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.draft-date {
+    font-size: 13px;
+    color: #999;
+}
