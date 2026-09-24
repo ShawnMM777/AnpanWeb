@@ -50,8 +50,6 @@ router.post("/forgot-password", (req, res) => {
     console.log('Request body:', req.body);
 
     const { email } = req.body;
-
-    // Input validation
     if (!email) {
         console.log(' Missing email');
         return res.status(400).json({
@@ -59,7 +57,6 @@ router.post("/forgot-password", (req, res) => {
         });
     }
 
-    // Check if database is available
     if (!db) {
         console.log(' Database not available');
         return res.status(500).json({
@@ -69,7 +66,6 @@ router.post("/forgot-password", (req, res) => {
 
     console.log(`Checking if user exists: ${email}`);
 
-    // Check if user exists
     const checkUserSql = "SELECT * FROM anpanusers WHERE email = ?";
 
     db.query(checkUserSql, [email], async (err, result) => {
@@ -83,7 +79,6 @@ router.post("/forgot-password", (req, res) => {
 
         if (result.length === 0) {
             console.log('User not found');
-            // For security, we still send success message but don't reveal if email exists
             return res.json({
                 success: true,
                 message: "If this email exists in our system, you will receive password reset instructions shortly."
@@ -93,12 +88,9 @@ router.post("/forgot-password", (req, res) => {
         console.log('User found, generating reset token');
 
         const user = result[0];
-
-        // Generate secure reset token using crypto
         const resetToken = crypto.randomBytes(32).toString('hex');
         const resetExpires = new Date(Date.now() + 3600000); // 1 hour from now
 
-        // Store reset token in database
         const updateTokenSql = "UPDATE anpanusers SET reset_token = ?, reset_expires = ? WHERE email = ?";
 
         db.query(updateTokenSql, [resetToken, resetExpires, email], async (err, updateResult) => {
@@ -119,7 +111,6 @@ router.post("/forgot-password", (req, res) => {
 
             console.log('Reset token stored in database');
 
-            // Send password reset email
             console.log('Sending password reset email...');
             const emailResult = await sendPasswordResetEmail(email, resetToken, user.fname);
 
@@ -145,7 +136,6 @@ router.post("/forgot-password", (req, res) => {
     });
 });
 
-// Reset password route
 router.post("/reset-password", (req, res) => {
     console.log('\n PASSWORD RESET REQUEST');
     console.log('Request body (token hidden):', { ...req.body, token: '[HIDDEN]' });
@@ -176,7 +166,6 @@ router.post("/reset-password", (req, res) => {
 
     console.log('🔍 Validating reset token');
 
-    // Find user with valid reset token (not expired)
     const findUserSql = "SELECT * FROM anpanusers WHERE reset_token = ? AND reset_expires > NOW()";
 
     db.query(findUserSql, [token], (err, result) => {
@@ -198,7 +187,6 @@ router.post("/reset-password", (req, res) => {
 
         const user = result[0];
 
-        // Update password and clear reset token
         const updatePasswordSql = "UPDATE anpanusers SET password = ?, reset_token = NULL, reset_expires = NULL WHERE id = ?";
 
         db.query(updatePasswordSql, [newPassword, user.id], (err, updateResult) => {
@@ -219,7 +207,6 @@ router.post("/reset-password", (req, res) => {
     });
 });
 
-// Email verification status check route
 router.get("/verify-token/:token", (req, res) => {
     const { token } = req.params;
 

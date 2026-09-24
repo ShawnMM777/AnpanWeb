@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { sendWelcomeEmail } = require('../emailService'); // Import email service
-
-// Load database with error handling
 let db;
 try {
   db = require("../db");
@@ -11,7 +9,6 @@ try {
   console.error(' Database not loaded in signupauth.js:', error.message);
 }
 
-// Test route
 router.get("/test", (req, res) => {
   console.log('Signup auth test route hit');
   res.json({
@@ -21,14 +18,12 @@ router.get("/test", (req, res) => {
   });
 });
 
-// Signup route with email verification
 router.post("/signup", (req, res) => {
   console.log('\nSIGNUP ATTEMPT RECEIVED');
   console.log('Request body:', req.body);
 
   const { fname, lname, email, password, pnumber, bdate } = req.body;
 
-  // Check if database is available
   if (!db) {
     console.log('Database not available');
     return res.status(500).json({
@@ -36,7 +31,6 @@ router.post("/signup", (req, res) => {
     });
   }
 
-  // Input validation - check for required fields
   if (!fname || !lname || !email || !password) {
     console.log('Missing required fields');
     return res.status(400).json({
@@ -49,8 +43,6 @@ router.post("/signup", (req, res) => {
       }
     });
   }
-
-  // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     console.log('Invalid email format');
@@ -59,7 +51,6 @@ router.post("/signup", (req, res) => {
     });
   }
 
-  // Password validation
   if (password.length < 6) {
     console.log('Password too short');
     return res.status(400).json({
@@ -69,7 +60,6 @@ router.post("/signup", (req, res) => {
 
   console.log(`🔍 Attempting signup for: ${email}`);
 
-  // First check if user already exists
   const checkUserSql = "SELECT * FROM anpanusers WHERE email = ?";
 
   db.query(checkUserSql, [email], async (err, result) => {
@@ -89,8 +79,6 @@ router.post("/signup", (req, res) => {
     }
 
     console.log('Email is available, creating user...');
-
-    // Insert new user into the correct table (anpanusers)
     const insertSql = "INSERT INTO anpanusers (fname, lname, email, password, pnumber, bdate) VALUES (?, ?, ?, ?, ?, ?)";
 
     db.query(insertSql, [fname, lname, email, password, pnumber || null, bdate || null], async (err, insertResult) => {
@@ -105,7 +93,6 @@ router.post("/signup", (req, res) => {
 
       console.log('User created successfully');
 
-      // Send welcome email
       console.log('Sending welcome email...');
       const emailResult = await sendWelcomeEmail(email, fname);
 
@@ -136,7 +123,6 @@ router.post("/signup", (req, res) => {
   });
 });
 
-// Email verification route (if you want to add email verification later)
 router.post("/verify-email", (req, res) => {
   const { token } = req.body;
 
@@ -146,14 +132,11 @@ router.post("/verify-email", (req, res) => {
     });
   }
 
-  // This would be used if you implement email verification tokens
-  // For now, it's just a placeholder
   res.json({
     success: true,
     message: "Email verification not implemented yet"
   });
 });
-
 console.log('signupauth.js module loaded with email functionality');
 
 module.exports = router;

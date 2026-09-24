@@ -17,13 +17,10 @@ const Signup = () => {
   const [messageType, setMessageType] = useState('');
   const navigate = useNavigate();
 
-  // Email validation
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-
-  // Password validation
   const validatePassword = (password) => {
     return password.length >= 6;
   };

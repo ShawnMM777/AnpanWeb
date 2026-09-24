@@ -1,6 +1,5 @@
 const nodemailer = require('nodemailer');
 
-// Email configuration
 const createTransporter = () => {
     return nodemailer.createTransport({ // FIXED: was createTransporter, now createTransport
         service: 'gmail',
@@ -11,7 +10,6 @@ const createTransporter = () => {
     });
 };
 
-// Alternative configuration for other SMTP services
 const createCustomTransporter = () => {
     return nodemailer.createTransport({
         host: 'smtp.gmail.com',

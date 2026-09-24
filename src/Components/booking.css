@@ -15,7 +15,6 @@
     object-fit: cover;
 }
 
-/* ----------------- GENERAL CONTAINER ----------------- */
 .booking-container {
     position: relative;
     z-index: 1;
