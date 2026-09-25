@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require("express");
-const cors = require("cors"); 
-const paypal = require ('paypal-rest-sdk');
+const cors = require("cors");
+const paypal = require('paypal-rest-sdk');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 const { redirect } = require('react-router-dom');
@@ -76,7 +76,7 @@ try {
   console.error('Error loading login routes:', error.message);
 }
 
-app.use((req, res, next) => { const originalJson = res.json;res.json = function (data) {console.log('Sending response:', data);console.log('Status:', res.statusCode);return originalJson.call(this, data); }; next() });
+app.use((req, res, next) => { const originalJson = res.json; res.json = function (data) { console.log('Sending response:', data); console.log('Status:', res.statusCode); return originalJson.call(this, data); }; next() });
 
 // Error handler
 app.use((err, req, res, next) => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import "./resetpassword.css";
-
+import bg from "../ASSETS/forgotpassword.png";
 const ResetPassword = () => {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -36,7 +36,6 @@ const ResetPassword = () => {
         }
     }, [searchParams]);
 
-    // Verify token with backend
     const verifyToken = async (token) => {
         try {
             const response = await fetch(`http://localhost:8081/BACKEND/auth/loginauth/verify-token/${token}`);

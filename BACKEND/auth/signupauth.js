@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { sendWelcomeEmail } = require('../emailService'); // Import email service
+const { sendWelcomeEmail } = require('../emailService'); 
+
 let db;
 try {
   db = require("../db");
@@ -43,6 +44,7 @@ router.post("/signup", (req, res) => {
       }
     });
   }
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     console.log('Invalid email format');
@@ -79,6 +81,7 @@ router.post("/signup", (req, res) => {
     }
 
     console.log('Email is available, creating user...');
+
     const insertSql = "INSERT INTO anpanusers (fname, lname, email, password, pnumber, bdate) VALUES (?, ?, ?, ?, ?, ?)";
 
     db.query(insertSql, [fname, lname, email, password, pnumber || null, bdate || null], async (err, insertResult) => {
@@ -92,7 +95,6 @@ router.post("/signup", (req, res) => {
       }
 
       console.log('User created successfully');
-
       console.log('Sending welcome email...');
       const emailResult = await sendWelcomeEmail(email, fname);
 
@@ -131,12 +133,12 @@ router.post("/verify-email", (req, res) => {
       error: "Database connection not available"
     });
   }
-
   res.json({
     success: true,
     message: "Email verification not implemented yet"
   });
 });
+
 console.log('signupauth.js module loaded with email functionality');
 
 module.exports = router;
